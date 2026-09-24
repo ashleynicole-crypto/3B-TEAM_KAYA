@@ -1,92 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f29a13">
+    <title>Sun Son Solar | Login and Registration</title>
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-    <img src="PCTURES/sunsun logo.png" alt="Sun Son Solar" width="122" height="122">
+    <main class="auth-layout">
+        <section class="auth-card auth-card--login" aria-labelledby="login-title">
+            <header class="brand">
+                <img class="brand-logo" src="PCTURES/sunsun logo.png" alt="Sun Son Solar" width="160" height="160">
+            </header>
+            <p class="section-label">Login</p>
+            <h1 class="form-title" id="login-title">Welcome back!!!</h1>
 
-    <h1>Log In</h1>
+            <form class="login-form">
+                <div class="login-fields">
+                    <div class="field">
+                        <label class="visually-hidden" for="login-username">Username</label>
+                        <input type="text" id="login-username" name="login-username" placeholder="Username" autocomplete="username" required>
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="login-password">Password</label>
+                        <input type="password" id="login-password" name="login-password" placeholder="Password" autocomplete="current-password" required>
+                    </div>
+                </div>
+                <button class="primary-button" type="submit">Log in</button>
+            </form>
 
-    <form>
-        <label for="login-username">Username:</label> <br>
-        <input type="text" id="login-username" name="login-username" required>
-        <br><br>
+            <p class="switch-text">Don’t have an account yet? <a href="registration">Sign up now!</a></p>
+        </section>
 
-        <label for="login-password">Password:</label> <br>
-        <input type="password" id="login-password" name="login-password" required>
-        <br> <br>
+        <section class="auth-card auth-card--registration" id="registration" aria-labelledby="registration-title">
+            <header class="brand">
+                <img class="brand-logo" src="PCTURES/sunsun logo.png" alt="Sun Son Solar" width="140" height="140">
+            </header>
+            <p class="section-label">Sign Up</p>
+            <h2 class="form-title" id="registration-title">Create your account</h2>
 
-        <button type="submit">Log In</button>
+            <form class="registration-form">
+                <div class="registration-grid">
+                    <div class="field">
+                        <label class="visually-hidden" for="firstname">First name</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="First name" autocomplete="given-name" required>
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="middlename">Middle name</label>
+                        <input type="text" id="middlename" name="middlename" placeholder="Middle name" autocomplete="additional-name">
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="lastname">Last name</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Last name" autocomplete="family-name" required>
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="birthdate">Birthdate</label>
+                        <input type="date" id="birthdate" name="birthdate" aria-label="Birthdate" required>
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="" selected disabled>Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="prefernottosay">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="field field--full">
+                        <label class="visually-hidden" for="address">Address</label>
+                        <textarea id="address" name="address" placeholder="Address" rows="1" required></textarea>
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="phone">Phone number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone number" autocomplete="tel" required>
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Username" autocomplete="username" required>
+                    </div>
+                    <div class="field">
+                        <label class="visually-hidden" for="password">Password</label>
+                        <input type="text" id="password" name="password" placeholder="Password" required>
+                    </div>
+                </div>
 
-    </form>
+                <div class="registration-actions">
+                    <button class="primary-button" type="submit">Create account</button>
+                    <button class="secondary-button" type="reset">Clear</button>
+                </div>
+            </form>
 
-    <p>Don't have an account?</p>
-    <a href="registration"> 
-        <button type="button">Register</button>
-    </a>
-
-    <hr>
-
-    <h1 id="registration">Registration</h1>
-
-    <form>
-        <label for="firstname">First Name:</label> <br>
-        <input type="text" id="firstname" name="firstname" required>
-        <br> <br>
-
-        <label for="middlename">Middle Name:</label> <br>
-        <input type="text" id="middlename" name="middlename">
-        <br> <br>
-
-        <label for="lastname">Last Name:</label> <br>
-        <input type="text" id="lastname" name="lastname" required>
-        <br> <br>
-
-        <label for="birthdate">Birthdate:</label> <br>
-        <input type="date" id="birthdate" name="birthdate" required>
-        <br> <br>
-
-        <label for="gender">Gender:</label> <br>
-        <select id="gender" name="gender" required>
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="prefernottosay">Prefer not to say</option>
-        </select> <br> <br>
-
-        <label for="email">Email:</label> <br>
-        <input type="email" id="email" name="email" required>
-        <br> <br>
-
-        <label for="phone">Phone Number:</label> <br>
-        <input type="tel" id="phone" name="phone" required>
-        <br> <br>
-
-        <label for="address">Address:</label> <br>
-        <textarea id="address" name="address" rows="4" cols="30" required> </textarea>
-        <br> <br>
-
-        <label for="username">Username:</label> <br>
-        <input type="text" id="username" name="username" required>
-        <br> <br>
-
-        <label for="password">Password:</label> <br>
-        <input type="text" id="password" name="password" required>
-        <br> <br>
-
-        <button type="submit">Register</button>
-        <button type="reset">Clear</button>
-
-    </form>
-
-    <p>Alreade have an account?</p>
-    <a href="login">
-        <button type="button">Log In</button>
-    </a>
-
+            <p class="switch-text">Already have an account? <a href="login">Log in</a></p>
+        </section>
+    </main>
 </body>
 </html>
