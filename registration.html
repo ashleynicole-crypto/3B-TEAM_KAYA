@@ -1,101 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f29a13">
-    <title>Sun Son Solar | Login and Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up | Sun Son Solar</title>
     <link rel="stylesheet" href="style1.css">
 </head>
-<body>
-    <main class="auth-layout">
-        <section class="auth-card auth-card--login" aria-labelledby="login-title">
-            <header class="brand">
-                <img class="brand-logo" src="PCTURES/sunsun logo.png" alt="Sun Son Solar" width="160" height="160">
-            </header>
-            <p class="section-label">Login</p>
-            <h1 class="form-title" id="login-title">Welcome back!!!</h1>
+<body class="auth-split-body signup-body">
+    <main class="auth-split-page signup-page">
+        <div class="auth-photo signup-photo" role="img" aria-label="Solar panels beneath a bright sky">
+            <img class="side-logo signup-side-logo" src="PCTURES/sunsun%20logo.png" alt="Sun Son Solar">
+        </div>
 
-            <form class="login-form">
-                <div class="login-fields">
-                    <div class="field">
-                        <label class="visually-hidden" for="login-username">Username</label>
-                        <input type="text" id="login-username" name="login-username" placeholder="Username" autocomplete="username" required>
+        <section class="auth-pane signup-pane" aria-labelledby="signup-title">
+            <p class="auth-welcome">Welcome!</p>
+            <div class="auth-card signup-card">
+                <h1 id="signup-title">Sign up</h1>
+                <form class="auth-form signup-form">
+                    <div class="signup-grid">
+                        <div class="auth-field">
+                            <label for="firstname">First name</label>
+                            <input type="text" id="firstname" name="firstname" autocomplete="given-name" required>
+                        </div>
+                        <div class="auth-field">
+                            <label for="middlename">Middle name</label>
+                            <input type="text" id="middlename" name="middlename" autocomplete="additional-name">
+                        </div>
+                        <div class="auth-field">
+                            <label for="lastname">Last name</label>
+                            <input type="text" id="lastname" name="lastname" autocomplete="family-name" required>
+                        </div>
+                        <div class="auth-field">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="auth-field">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="prefernottosay">Prefer not to say</option>
+                            </select>
+                        </div>
+                        <div class="auth-field">
+                            <label for="birthdate">Birthdate</label>
+                            <input type="date" id="birthdate" name="birthdate" autocomplete="bday" required>
+                        </div>
+                        <div class="auth-field signup-field-wide">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" rows="2" autocomplete="street-address" required></textarea>
+                        </div>
+                        <div class="auth-field">
+                            <label for="phone">Contact number</label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+                        </div>
+                        <div class="auth-field">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" autocomplete="new-password" required>
+                        </div>
+                        <div class="auth-field signup-field-wide">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" autocomplete="username" required>
+                        </div>
                     </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="login-password">Password</label>
-                        <input type="password" id="login-password" name="login-password" placeholder="Password" autocomplete="current-password" required>
+                    <div class="signup-actions">
+                        <button class="auth-submit" type="submit">Sign up now</button>
+                        <button class="auth-reset" type="reset">Clear</button>
                     </div>
-                </div>
-                <button class="primary-button" type="submit">Log in</button>
-            </form>
-
-            <p class="switch-text">Don’t have an account yet? <a href="registration">Sign up now!</a></p>
-        </section>
-
-        <section class="auth-card auth-card--registration" id="registration" aria-labelledby="registration-title">
-            <header class="brand">
-                <img class="brand-logo" src="PCTURES/sunsun logo.png" alt="Sun Son Solar" width="140" height="140">
-            </header>
-            <p class="section-label">Sign Up</p>
-            <h2 class="form-title" id="registration-title">Create your account</h2>
-
-            <form class="registration-form">
-                <div class="registration-grid">
-                    <div class="field">
-                        <label class="visually-hidden" for="firstname">First name</label>
-                        <input type="text" id="firstname" name="firstname" placeholder="First name" autocomplete="given-name" required>
-                    </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="middlename">Middle name</label>
-                        <input type="text" id="middlename" name="middlename" placeholder="Middle name" autocomplete="additional-name">
-                    </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="lastname">Last name</label>
-                        <input type="text" id="lastname" name="lastname" placeholder="Last name" autocomplete="family-name" required>
-                    </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="birthdate">Birthdate</label>
-                        <input type="date" id="birthdate" name="birthdate" aria-label="Birthdate" required>
-                    </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="gender">Gender</label>
-                        <select id="gender" name="gender" required>
-                            <option value="" selected disabled>Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="prefernottosay">Prefer not to say</option>
-                        </select>
-                    </div>
-                    <div class="field field--full">
-                        <label class="visually-hidden" for="address">Address</label>
-                        <textarea id="address" name="address" placeholder="Address" rows="1" required></textarea>
-                    </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
-                    </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="phone">Phone number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Phone number" autocomplete="tel" required>
-                    </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="Username" autocomplete="username" required>
-                    </div>
-                    <div class="field">
-                        <label class="visually-hidden" for="password">Password</label>
-                        <input type="text" id="password" name="password" placeholder="Password" required>
-                    </div>
-                </div>
-
-                <div class="registration-actions">
-                    <button class="primary-button" type="submit">Create account</button>
-                    <button class="secondary-button" type="reset">Clear</button>
-                </div>
-            </form>
-
-            <p class="switch-text">Already have an account? <a href="login">Log in</a></p>
+                </form>
+                <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+            </div>
+            <footer class="auth-footer" aria-label="Information links">
+                <a href="index.html#about">About <span aria-hidden="true">→</span></a>
+                <a href="index.html#contact">Contact <span aria-hidden="true">→</span></a>
+                <a href="index.html#terms">Terms <span aria-hidden="true">→</span></a>
+            </footer>
         </section>
     </main>
 </body>

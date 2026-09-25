@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in | Sun Son Solar</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body class="auth-split-body login-body">
+    <main class="auth-split-page login-page">
+        <div class="auth-photo login-photo" role="img" aria-label="Solar workers installing panels">
+            <img class="side-logo login-side-logo" src="PCTURES/sunsun%20logo.png" alt="Sun Son Solar">
+        </div>
+
+        <section class="auth-pane login-pane" aria-labelledby="login-title">
+            <p class="auth-welcome">Welcome back!</p>
+            <div class="auth-card login-card">
+                <h1 id="login-title">Log in</h1>
+                <form class="auth-form login-form">
+                    <div class="auth-field">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" name="login-username" autocomplete="username" required>
+                    </div>
+                    <div class="auth-field">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="login-password" autocomplete="current-password" required>
+                    </div>
+                    <button class="auth-submit" type="submit">Submit</button>
+                </form>
+                <p class="auth-switch">Don't have an account? <a href="registration.html">Sign Up</a></p>
+            </div>
+            <footer class="auth-footer" aria-label="Information links">
+                <a href="index.html#about">About <span aria-hidden="true">→</span></a>
+                <a href="index.html#contact">Contact <span aria-hidden="true">→</span></a>
+                <a href="index.html#terms">Terms <span aria-hidden="true">→</span></a>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
