@@ -69,12 +69,12 @@
                         <button class="auth-reset" type="reset">Clear</button>
                     </div>
                 </form>
-                <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+                <p class="auth-switch">Already have an account? <a href="login.php">Log in</a></p>
             </div>
             <footer class="auth-footer" aria-label="Information links">
-                <a href="index.html#about">About <span aria-hidden="true">→</span></a>
-                <a href="index.html#contact">Contact <span aria-hidden="true">→</span></a>
-                <a href="index.html#terms">Terms <span aria-hidden="true">→</span></a>
+                <a href="index.php#about">About <span aria-hidden="true">→</span></a>
+                <a href="index.php#contact">Contact <span aria-hidden="true">→</span></a>
+                <a href="index.php#terms">Terms <span aria-hidden="true">→</span></a>
             </footer>
         </section>
     </main>
