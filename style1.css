@@ -681,6 +681,94 @@ a button {
     }
 }
 
+/* Public company and service information */
+.home-info {
+    padding: clamp(52px, 8vw, 96px) 24px;
+    background: #fff;
+}
+
+.home-info--services {
+    background: #f0f8fb;
+}
+
+.home-info__inner {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+.home-eyebrow {
+    color: #0875c4;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+}
+
+.home-info h2 {
+    margin: 8px 0 12px;
+    color: #102d44;
+    font: 400 clamp(28px, 4vw, 42px)/1.2 Georgia, serif;
+}
+
+.home-info__inner > p:not(.home-eyebrow) {
+    max-width: 700px;
+    color: #435563;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 30px 0;
+}
+
+.benefit-grid article {
+    padding: 24px;
+    border: 1px solid #dcebf1;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.benefit-grid h3 {
+    margin: 0 0 9px;
+    color: #0875c4;
+    font-size: 19px;
+}
+
+.benefit-grid p {
+    margin: 0;
+    color: #435563;
+    line-height: 1.55;
+}
+
+.home-info--services .landing-cta {
+    margin: 24px 0 0;
+}
+
+.home-contact {
+    padding: 34px 24px;
+    background: #102d44;
+    color: #fff;
+    text-align: center;
+}
+
+.home-contact p {
+    margin: 6px 0;
+}
+
+.home-contact a {
+    color: #ffd27a;
+}
+
+.home-contact small {
+    display: block;
+    margin-top: 20px;
+    color: #d4e1e8;
+}
+
+@media (max-width: 680px) { .benefit-grid { grid-template-columns: 1fr; } }
+
 /* Shared split-screen login and registration layouts */
 .auth-split-body {
     display: block;
@@ -1018,6 +1106,292 @@ a button {
     }
 }
 
+/* Role-based customer and staff portals */
+.portal-body {
+    display: block;
+    min-height: 100vh;
+    padding: 0;
+    background: #f2f7fa;
+    color: #17344b;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.portal-body::before,
+.portal-body::after {
+    display: none;
+}
+
+.portal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px clamp(18px, 5vw, 64px);
+    background: #103550;
+    color: #fff;
+}
+
+.portal-header a {
+    color: #ffe098;
+}
+
+.portal-main {
+    width: min(1200px, 100% - 32px);
+    margin: 28px auto 64px;
+}
+
+.portal-main h1 {
+    margin: 0 0 20px;
+    color: #103550;
+    font: 400 clamp(28px, 4vw, 40px)/1.2 Georgia, serif;
+}
+
+.portal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 18px 0;
+    align-items: start;
+}
+
+.portal-card {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #d6e5eb;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(19, 61, 83, .05);
+}
+
+.portal-card--wide {
+    grid-column: 1 / -1;
+}
+
+.portal-card h2 {
+    margin: 0 0 16px;
+    color: #0875a9;
+    font: 600 22px/1.25 Arial, sans-serif;
+}
+
+.portal-card h3 {
+    margin: 12px 0;
+}
+
+.portal-card label {
+    display: block;
+    margin: 10px 0;
+    color: #29495d;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.portal-card input,
+.portal-card select,
+.portal-card textarea {
+    margin-top: 5px;
+    min-height: 42px;
+    border-color: #cadce5;
+    background: #f9fcfd;
+}
+
+.portal-card input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    min-height: 0;
+}
+
+.portal-card .auth-submit {
+    width: auto;
+    min-width: 180px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.portal-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.portal-card th,
+.portal-card td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #e5eef2;
+    text-align: left;
+    vertical-align: top;
+}
+
+.portal-card th {
+    color: #526e7e;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.status-pill {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 4px 9px;
+    border-radius: 99px;
+    background: #e6f5ee;
+    color: #24664b;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.list-row,
+.job-card {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5eef2;
+}
+
+.list-row p,
+.job-card p {
+    margin: 6px 0;
+    line-height: 1.5;
+}
+
+.list-row small,
+.job-card small {
+    color: #607987;
+}
+
+.small-button {
+    width: auto;
+    min-height: 35px;
+    margin: 5px 0;
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: #e9f3f8;
+    color: #16435e;
+    box-shadow: none;
+    font-size: 13px;
+}
+
+.notice {
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: #e4f7eb;
+    color: #1b6741;
+}
+
+.notice--error {
+    background: #fff0e9;
+    color: #943f20;
+}
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.metric-grid article {
+    display: grid;
+    gap: 4px;
+    padding: 18px;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.metric-grid strong {
+    color: #0875a9;
+    font-size: 24px;
+}
+
+.metric-grid span {
+    color: #526e7e;
+}
+
+.staff-links {
+    margin: 18px 0;
+}
+
+.staff-links a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 9px;
+    background: #103550;
+    color: #fff;
+}
+
+.inline-settings {
+    display: grid;
+    grid-template-columns: 1fr minmax(100px, 150px) auto auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.inline-settings label {
+    margin: 0;
+}
+
+.availability-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 8px;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.availability-row label {
+    margin: 3px 0;
+}
+
+.availability-row input[type="time"] {
+    min-height: 34px;
+    padding: 5px;
+}
+
+.portal-card details {
+    margin-top: 8px;
+}
+
+.portal-card summary {
+    color: #0875a9;
+    cursor: pointer;
+}
+
+.faq-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #dcebf1;
+    color: #29495d;
+}
+
+.faq-item summary {
+    color: #0875a9;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.faq-item p {
+    line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+    .portal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-card--wide {
+        grid-column: auto;
+    }
+
+    .portal-header {
+        flex-wrap: wrap;
+    }
+
+    .metric-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .inline-settings {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media (max-width: 430px) {
     .signup-grid {
         grid-template-columns: 1fr;
@@ -1034,4 +1408,25 @@ a button {
     .signup-card h1 {
         font-size: 30px;
     }
+}
+.usage-row {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 2fr 32px;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.usage-row div {
+    height: 12px;
+    border-radius: 8px;
+    background: #e4edf1;
+    overflow: hidden;
+}
+
+.usage-row i {
+    display: block;
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #10a0c2, #ffc04d);
 }
