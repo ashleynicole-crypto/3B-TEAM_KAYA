@@ -15,7 +15,7 @@ Online product orders, inventory, payment processing, email/SMS delivery, check-
 
 ## Database setup
 
-Import `database.sql` into MySQL/phpMyAdmin. The script creates the tables and includes idempotent upgrades for databases created by earlier versions. Account credentials are provisioned outside the repository. Create the first administrator with `php spark sunson:create-admin`, then create employee accounts through the authorized admin or HR workflow.
+Import `database.sql` into MySQL/phpMyAdmin. The script creates the tables, includes idempotent upgrades for databases created by earlier versions, and seeds the preregistered Katherine Sinagaraw and Sol Solis employee accounts with password hashes that require a password change at first sign-in. Plaintext passwords are not included in the repository. Create additional employee accounts through the authorized admin or HR workflow.
 
 ## Run locally
 

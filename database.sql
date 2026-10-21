@@ -109,6 +109,30 @@ PREPARE add_employee_must_change_password_stmt FROM @add_employee_must_change_pa
 EXECUTE add_employee_must_change_password_stmt;
 DEALLOCATE PREPARE add_employee_must_change_password_stmt;
 
+INSERT IGNORE INTO EMPLOYEE (
+  first_name, middle_name, last_name, birthdate, gender, email, phone_number,
+  address, username, password, department_id, role, is_active, must_change_password
+)
+SELECT
+  'Katherine', 'Olap', 'Sinagaraw', '1990-07-01', 'Female',
+  'katherine.sinagaraw@sunsonsolar.com', '09291230983', 'Pasig City',
+  'KittyKat16', '$2y$10$wnWqQaOQ.KdKxrEf81upsuxTiadWsmpbgAOCsd8b5EkLB.uhEWvxW',
+  department_id, 'admin', 1, 1
+FROM DEPARTMENT
+WHERE department_name = 'Administration';
+
+INSERT IGNORE INTO EMPLOYEE (
+  first_name, middle_name, last_name, birthdate, gender, email, phone_number,
+  address, username, password, department_id, role, is_active, must_change_password
+)
+SELECT
+  'Sol', 'Sun', 'Solis', '1970-01-01', 'Other',
+  'sol.solis@sunsonsolar.com', '0000000000', 'Please update employee profile',
+  'SolSolis', '$2y$10$rTNU9ylGlLhBJt7ci4sUW.CedSOkO1sQfS2S/oaIRL.lR6W1ypWtK',
+  department_id, 'admin', 1, 1
+FROM DEPARTMENT
+WHERE department_name = 'IT';
+
 CREATE TABLE IF NOT EXISTS SERVICE_CATEGORY (
   service_id INT NOT NULL AUTO_INCREMENT,
   service_name VARCHAR(100) NOT NULL,
