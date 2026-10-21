@@ -6,5 +6,5 @@ use CodeIgniter\Controller;
 
 abstract class BaseController extends Controller
 {
-    protected $helpers = ['form', 'url'];
+    protected $helpers = ['form', 'url', 'product'];
 }

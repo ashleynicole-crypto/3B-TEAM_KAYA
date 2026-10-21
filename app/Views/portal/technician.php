@@ -1,3 +1,63 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Technician field page | Sun Son Solar</title><link rel="stylesheet" href="<?= base_url('style1.css') ?>"></head><body class="portal-body"><header class="portal-header"><strong>Sun Son Solar · Technician</strong><span><?= esc(session('username')) ?></span><a href="<?= site_url('logout') ?>">Log out</a></header><main class="portal-main"><h1>Today’s field work</h1><?php if($msg=session()->getFlashdata('message')): ?><p class="notice"><?= esc($msg) ?></p><?php endif ?><?php if($msg=session()->getFlashdata('error')): ?><p class="notice notice--error"><?= esc($msg) ?></p><?php endif ?><div class="portal-grid"><section class="portal-card portal-card--wide"><h2>Assigned jobs</h2><?php if(!$jobs): ?><p>No jobs assigned yet.</p><?php endif ?><?php foreach($jobs as $job): ?><article class="job-card"><h3><?= esc($job['service_name']) ?> · <?= esc($job['scheduled_at']) ?></h3><p><strong>Customer:</strong> <?= esc($job['first_name'].' '.$job['last_name']) ?></p><p><strong>Site:</strong> <?= esc($job['address']) ?></p><p>Status: <?= esc(str_replace('_',' ',$job['status'])) ?></p><form class="checkin-form" method="post" action="<?= site_url('staff/checkin') ?>"><?= csrf_field() ?><input type="hidden" name="booking_id" value="<?= (int)$job['booking_id'] ?>"><input type="hidden" name="latitude"><input type="hidden" name="longitude"><button class="auth-submit" type="button" data-checkin>📍 Check in at this site</button></form><form method="post" action="<?= site_url('staff/report') ?>"><?= csrf_field() ?><input type="hidden" name="booking_id" value="<?= (int)$job['booking_id'] ?>"><label>Service report<select name="report_type"><option value="issue">Problem encountered</option><option value="equipment">Equipment issue</option><option value="customer_concern">Customer concern</option><option value="other">Other</option></select></label><label>Details<textarea name="details" rows="2" required></textarea></label><button class="small-button">Send report</button></form></article><?php endforeach ?></section><section class="portal-card"><h2>Announcements</h2><?php foreach($announcements as $item): ?><article class="list-row"><strong><?= esc($item['title']) ?></strong><p><?= esc($item['message']) ?></p></article><?php endforeach ?><?php if(!$announcements): ?><p>No announcements.</p><?php endif ?></section><section class="portal-card"><h2>Your recent reports</h2><?php foreach($reports as $report): ?><p><?= esc($report['created_at'].' · '.$report['report_type']) ?></p><?php endforeach ?></section></div></main><script>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Technician field page | Sun Son Solar</title>
+    <link rel="stylesheet" href="<?= base_url('style1.css') ?>">
+</head>
+<body class="portal-body">
+<header class="portal-header"><strong>Sun Son Solar · Technician</strong><span><?= esc(session('username')) ?></span><a href="<?= site_url('staff/profile') ?>">Profile</a><a href="<?= site_url('staff/password') ?>">Change password</a><a href="<?= site_url('logout') ?>">Log out</a></header>
+<main class="portal-main">
+    <h1>Today’s field work</h1>
+    <?php if ($msg = session()->getFlashdata('message')): ?><p class="notice"><?= esc($msg) ?></p><?php endif ?>
+    <?php if ($msg = session()->getFlashdata('error')): ?><p class="notice notice--error"><?= esc($msg) ?></p><?php endif ?>
+    <div class="portal-grid">
+        <section class="portal-card portal-card--wide">
+            <h2>Assigned jobs</h2>
+            <?php if (!$jobs): ?><p>No jobs assigned yet.</p><?php endif ?>
+            <?php foreach ($jobs as $job): ?>
+                <article class="job-card">
+                    <h3><?= esc($job['service_name']) ?> · <?= esc($job['scheduled_at']) ?></h3>
+                    <p><strong>Customer:</strong> <?= esc($job['first_name'].' '.$job['last_name']) ?></p>
+                    <p><strong>Site:</strong> <?= esc($job['address']) ?></p>
+                    <p>Status: <?= esc(str_replace('_',' ',$job['status'])) ?></p>
+                    <?php if (in_array($job['status'], ['scheduled','in_progress'], true)): ?>
+                        <form method="post" action="<?= site_url('staff/booking/'.(int)$job['booking_id'].'/status') ?>">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="status" value="<?= $job['status']==='scheduled'?'in_progress':'completed' ?>">
+                            <button class="small-button"><?= $job['status']==='scheduled'?'Start job':'Mark job complete' ?></button>
+                        </form>
+                    <?php endif ?>
+                    <form class="checkin-form" method="post" action="<?= site_url('staff/checkin') ?>">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="booking_id" value="<?= (int)$job['booking_id'] ?>">
+                        <input type="hidden" name="latitude"><input type="hidden" name="longitude">
+                        <button class="auth-submit" type="button" data-checkin>📍 Check in at this site</button>
+                    </form>
+                    <form method="post" action="<?= site_url('staff/report') ?>">
+                        <?= csrf_field() ?><input type="hidden" name="booking_id" value="<?= (int)$job['booking_id'] ?>">
+                        <label>Service report<select name="report_type"><option value="issue">Problem encountered</option><option value="equipment">Equipment issue</option><option value="customer_concern">Customer concern</option><option value="other">Other</option></select></label>
+                        <label>Work notes or customer concern<textarea name="details" rows="3" required></textarea></label>
+                        <button class="small-button">Send report</button>
+                    </form>
+                </article>
+            <?php endforeach ?>
+        </section>
+        <section class="portal-card">
+            <h2>Announcements</h2>
+            <?php foreach ($announcements as $item): ?><article class="list-row"><strong><?= esc($item['title']) ?></strong><p><?= esc($item['message']) ?></p></article><?php endforeach ?>
+            <?php if (!$announcements): ?><p>No announcements.</p><?php endif ?>
+        </section>
+        <section class="portal-card">
+            <h2>Your recent reports</h2>
+            <?php foreach ($reports as $report): ?><p><?= esc($report['created_at'].' · '.$report['report_type']) ?> — <?= esc($report['details']) ?></p><?php endforeach ?>
+            <?php if (!$reports): ?><p>No reports submitted yet.</p><?php endif ?>
+        </section>
+    </div>
+</main>
+<script>
 document.querySelectorAll('[data-checkin]').forEach(button=>button.addEventListener('click',()=>{if(!navigator.geolocation){alert('Location is not available on this device.');return;}button.disabled=true;button.textContent='Getting your location…';navigator.geolocation.getCurrentPosition(pos=>{const form=button.closest('form');form.querySelector('[name=latitude]').value=pos.coords.latitude;form.querySelector('[name=longitude]').value=pos.coords.longitude;form.requestSubmit();},()=>{button.disabled=false;button.textContent='📍 Check in at this site';alert('Allow location access to check in at the site.');},{enableHighAccuracy:true,timeout:15000});}));
-</script></body></html>
+</script>
+</body>
+</html>

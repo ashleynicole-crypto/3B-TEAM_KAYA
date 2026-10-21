@@ -1,33 +1,40 @@
-Sun Son Solar
+# Sun Son Solar Management System
 
-Team Name
-KAYA
+CodeIgniter 4 application for the Sun Son Solar public website and customer and employee portals.
 
-Team Members
-- Ando, Vivian P.
-- Cruz, Ashley Nicole S.
-- Cruz, Mark Kevin P.
-- Delim, Jeremy V.
+## Main features
 
-Description
-Sun Son Solar is a web-based application designed to monitor, manage, and optimize solar power generation and system performance. The project aims to provide users with real-time data tracking, energy consumption insights, and database management for solar panel installations.
+- Public company, solar benefits, product, service, FAQ, approved testimonial, and news sections.
+- Customer registration, service bookings, appointment reschedule requests, history, notifications, support tickets, product quote requests, and profile/password management.
+- Employee portals for administration, HR, dispatch, technicians, and general employee announcements.
+- Staff account search, editing, activation, deactivation, and one-time temporary password resets. Employee accounts are created by HR or an administrator; temporary passwords must be changed at first sign-in.
+- Shared booking calendar, technician assignment with schedule conflict checks, service availability/pricing, support responses, payments/receipt references, CSV reports, and technician check-ins/service reports.
+- Admin activity history for account, booking, service, product, announcement, settings, payment, support, check-in, and report actions.
 
-## Company and service information
-
-The public homepage presents Sun Son Solar as a Pasig City solar provider and describes its products (panels, inverters, batteries, mounting, and wires) and services (consultation, design, permitting, installation, maintenance, repair, and monitoring). It highlights energy savings, sustainability, and energy independence and includes a service sign-up call to action and company contact details.
+Online product orders, inventory, payment processing, email/SMS delivery, check-out attendance, and detailed department-specific permissions are not enabled because the interview notes leave those requirements unconfirmed.
 
 ## Database setup
 
-Import `database.sql` into MySQL/phpMyAdmin. It keeps the existing customer registration table and adds departments, employee account records, a configurable service catalog, bookings, site check-ins with coordinates, announcements, and technician service reports. Employee records can hold admin, dispatcher, and technician roles. Employee accounts are intended to be created by HR or an administrator.
+Import `database.sql` into MySQL/phpMyAdmin. The script creates the tables and includes idempotent upgrades for databases created by earlier versions. Account credentials are provisioned outside the repository. Create the first administrator with `php spark sunson:create-admin`, then create employee accounts through the authorized admin or HR workflow.
 
-No starter accounts or passwords are inserted. Create accounts through the secure account-provisioning flow and store password hashes, never the passwords from interview notes.
+## Run locally
 
-## CodeIgniter 4 application
+Requirements: PHP 8.2+, Composer, MySQL, and the PHP extensions required by CodeIgniter 4.
 
-The project now uses a CodeIgniter 4 MVC app for the public page and customer/staff workflows. Routes are defined in `app/Config/Routes.php`; controllers, views, and models handle authentication, customer bookings/profile/history/support, employee account management, dispatch, announcements, service availability/pricing, payments, technician site check-ins, and service reports. The original root PHP pages and `api/` endpoints remain as legacy files; use the CodeIgniter `public/` entry point.
+1. Run `composer install`.
+2. Configure `.env` with the database credentials and `app.baseURL`.
+3. Import `database.sql`.
+4. Serve the `public/` directory as the web root. With XAMPP/Apache and rewrite enabled, open `http://localhost/3B-TEAM_KAYA/`.
 
-Requirements: PHP 8.2+, Composer 2.0.14+, MySQL, and the PHP extensions required by CodeIgniter. From this folder, run `composer install`, copy `.env.example` to `.env`, set the database credentials and `app.baseURL`, import `database.sql`, then serve the `public/` directory as the web root. With XAMPP and Apache rewrite enabled, open `http://localhost/3B-TEAM_KAYA/`; alternatively open the `public/` directory directly. Create the first admin interactively with `php spark sunson:create-admin`; this avoids putting a starter password in code or SQL. Then use the admin dashboard to provision employee accounts.
+For the current development preview, use `php -S 127.0.0.1:8080 -t . dev-router.php` and open `http://127.0.0.1:8080/`.
 
-Customer accounts can be self-registered. The staff dashboard is role-based: admins manage staff, services, availability, payments, reports, and announcements; dispatchers manage bookings and tickets; technicians see only their assigned job details and can check in with device location or submit job reports; HR manages employee accounts. Check-ins require browser location permission and a secure context (HTTPS or localhost). Booking availability is enforced when weekly service hours have been configured.
+## Code layout
 
-The workspace does not have PHP or Composer installed, so framework dependency installation and runtime verification could not be performed here. CodeIgniter 4's official guide describes Composer installation and server requirements: https://www.codeigniter.com/user_guide/installation/index.html
+- `app/Config/Routes.php` defines explicit public, customer, and staff routes. Auto-routing is disabled.
+- `app/Controllers/` contains the `Home`, `Auth`, and `Portal` request handlers.
+- `app/Libraries/ActivityLogger.php` records important actions in `ACTIVITY_LOG`.
+- `app/Models/` contains the customer registration model.
+- `app/Views/` contains the public, authentication, customer, and role-specific portal pages.
+- `database.sql` defines the database and repeatable schema upgrades.
+
+The single login page accepts customer and employee credentials, then redirects to the correct portal based on account type and employee role. Technicians can see details only for jobs assigned to their account. Check-ins use browser geolocation and require location permission in a secure context (HTTPS or localhost).
