@@ -16,6 +16,7 @@
             <p class="auth-welcome">Welcome back!</p>
             <div class="auth-card login-card">
                 <h1>Log in</h1>
+                <p>Customers, administrators, and employees all sign in here with their username and password.</p>
 
                 <?php if (session()->getFlashdata('message')): ?>
                     <p><?= esc(session()->getFlashdata('message')) ?></p>

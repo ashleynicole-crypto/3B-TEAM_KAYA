@@ -11,7 +11,7 @@ class CustomerModel extends Model
     protected $returnType = 'array';
     protected $allowedFields = [
         'first_name', 'middle_name', 'last_name', 'birthdate', 'gender',
-        'email', 'phone_number', 'address', 'username', 'password',
+        'email', 'phone_number', 'address', 'username', 'password', 'promotional_opt_in',
     ];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
