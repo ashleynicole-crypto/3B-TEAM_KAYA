@@ -442,7 +442,7 @@ a button {
     }
 }
 
-/* Landing page */
+/* Landing page (FIXED for scrolling & extra content sections) */
 .landing-body {
     display: block;
     min-height: 100vh;
@@ -484,13 +484,14 @@ a button {
 }
 
 .landing-content {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     min-width: 0;
     min-height: 100vh;
     min-height: 100svh;
-    grid-template-rows: auto 1fr auto;
     padding: 30px clamp(28px, 5.2vw, 74px) 22px;
     background: #f8fcfd;
+    overflow-y: auto;
 }
 
 .landing-nav {
@@ -499,6 +500,7 @@ a button {
     justify-content: flex-end;
     gap: 24px;
     justify-self: end;
+    margin-bottom: 20px;
 }
 
 .landing-nav a {
@@ -537,6 +539,7 @@ a button {
     align-self: center;
     justify-self: center;
     padding: 12px 0 20px;
+    margin-bottom: 20px;
 }
 
 .landing-logo {
@@ -600,7 +603,8 @@ a button {
     flex-wrap: wrap;
     justify-content: space-around;
     gap: clamp(20px, 3.4vw, 48px);
-    padding: 12px 4px 0;
+    padding: 20px 40px 10px;
+    margin-top: auto;
 }
 
 .landing-footer a {
@@ -1034,4 +1038,205 @@ a button {
     .signup-card h1 {
         font-size: 30px;
     }
+}
+
+/* --- Home Page Extra Sections Styles --- */
+.home-extra-section {
+    margin: 20px auto 30px;
+    width: 100%;
+    max-width: 620px;
+    font-family: Arial, sans-serif;
+}
+
+.info-block {
+    margin-bottom: 35px;
+}
+
+.info-block.text-center {
+    text-align: center;
+}
+
+.info-block.mb-0 {
+    margin-bottom: 10px;
+}
+
+.info-title {
+    color: #0875c4;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.info-subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.info-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.info-card {
+    background: #ffffff;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(8, 117, 196, 0.18);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.info-card-title {
+    margin: 0 0 6px;
+    color: #0875c4;
+    font-size: 16px;
+}
+
+.info-card-desc {
+    margin: 0;
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.4;
+}
+
+.badge-box {
+    background: #ffffff;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(8, 117, 196, 0.18);
+    font-size: 14px;
+    color: #1e293b;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* --- Dashboard Styles (FIXED with Grid layout) --- */
+body.dash-body {
+    background: #f8fbfd;
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    color: #142b55;
+}
+
+.dash-shell {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(8, 117, 196, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f4f8;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.dash-header h2 {
+    margin: 0;
+    color: #0875c4;
+}
+
+.dash-logout {
+    color: #ed3147;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.dash-logout:hover {
+    text-decoration: underline;
+}
+
+.role-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.role-tabs .tab-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgba(8, 117, 196, 0.4);
+    background: #f0f8ff;
+    color: #0875c4;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.18s, color 0.18s;
+}
+
+.role-tabs .tab-btn:hover {
+    background: #e2f2ff;
+}
+
+.role-tabs .tab-btn.active {
+    background: #0875c4;
+    color: #fff;
+    border-color: #0875c4;
+}
+
+.pane {
+    display: none;
+}
+
+.pane.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+.card-full {
+    grid-column: 1 / -1;
+}
+
+.dash-shell .card {
+    background: #f9fbfc;
+    padding: 18px 20px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.dash-shell .card h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #0875c4;
+    font-size: 16px;
+}
+
+.dash-shell .card p {
+    margin: 0;
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.checkin-btn {
+    background: #28a745;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 12px;
+    transition: filter 0.16s, transform 0.16s;
+}
+
+.checkin-btn:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
 }

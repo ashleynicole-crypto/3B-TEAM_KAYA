@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun Son Solar | Dashboard</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        body { background: #f8fbfd; margin: 0; padding: 30px; font-family: Arial, sans-serif; color: #142b55; }
+        .dash-shell { max-width: 900px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 20px; border: 1px solid #0875c433; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .dash-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f0f4f8; padding-bottom: 15px; margin-bottom: 20px; }
+        .role-tabs { display: flex; gap: 10px; margin-bottom: 25px; }
+        .role-tabs button { flex: 1; padding: 10px; border: 1px solid #0875c466; background: #f0f8ff; color: #0875c4; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .role-tabs button.active { background: #0875c4; color: #fff; }
+        .pane { display: none; }
+        .pane.active { display: block; }
+        .card { background: #f9fbfc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 15px; }
+        .card h3 { margin-top: 0; color: #0875c4; font-size: 16px; }
+        .checkin-btn { background: #28a745; color: white; padding: 15px; font-size: 16px; border: none; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="dash-shell">
+    <div class="dash-header">
+        <h2>Sun Son Solar System</h2>
+        <a href="index.html" style="color: #ed3147; font-weight: bold; text-decoration: none;">Logout</a>
+    </div>
+
+    <!-- Role Tabs -->
+    <div class="role-tabs">
+        <button class="active" onclick="switchTab(event, 'customer')">Customer</button>
+        <button onclick="switchTab(event, 'technician')">Technician</button>
+        <button onclick="switchTab(event, 'admin')">Admin / HR / Dispatch</button>
+    </div>
+
+    <!-- 1. CUSTOMER VIEW (Requested by Kat) -->
+    <div id="customer" class="pane active">
+        <div class="card">
+            <h3>Schedule Section</h3>
+            <p>View and manage scheduled services (consultation, installation, maintenance).</p>
+        </div>
+        <div class="card">
+            <h3>Notifications Panel</h3>
+            <p>Reminders, schedule updates, and promotions.</p>
+        </div>
+        <div class="card">
+            <h3>Profile Section</h3>
+            <p>Update personal info, change password, and manage preferences.</p>
+        </div>
+        <div class="card">
+            <h3>History Tab</h3>
+            <p>Completed services, payments, and receipts.</p>
+        </div>
+        <div class="card">
+            <h3>Support / Help Section</h3>
+            <p>Chat box / ticketing system to contact support.</p>
+        </div>
+    </div>
+
+    <!-- 2. TECHNICIAN VIEW (Requested by Kat & Technicians) -->
+    <div id="technician" class="pane">
+        <div class="card" style="text-align: center;">
+            <h3>Site Check-In</h3>
+            <p>One button recording your Name, Time, and GPS Coordinates.</p>
+            <button class="checkin-btn" onclick="alert('Recorded Name, Time, and Coordinates!')">Check In at Site</button>
+        </div>
+        <div class="card">
+            <h3>Assigned Jobs (View Only)</h3>
+            <p>Customer name, address, and service type for assigned jobs.</p>
+        </div>
+        <div class="card">
+            <h3>Report Submission</h3>
+            <p>Log problems encountered (equipment issues, customer concerns) sent to Admin.</p>
+        </div>
+        <div class="card">
+            <h3>Announcements / Messaging</h3>
+            <p>Updates, safety guidelines, and notices from Admin or HR.</p>
+        </div>
+    </div>
+
+    <!-- 3. ADMIN / HR / DISPATCH VIEW (Requested by Sol & Kat) -->
+    <div id="admin" class="pane">
+        <div class="card">
+            <h3>User Management</h3>
+            <p>Add employees, assign departments (Admin, IT, Dispatch, Accounting, HR, Marketing, Sales, Customer Service), view, edit, or deactivate accounts.</p>
+        </div>
+        <div class="card">
+            <h3>Schedule Overview Calendar</h3>
+            <p>Calendar view of all customer bookings to assign technicians, approve/decline, and adjust schedules.</p>
+        </div>
+        <div class="card">
+            <h3>Reports & Analytics</h3>
+            <p>Charts and graphs on customer activity, service usage, and revenue.</p>
+        </div>
+        <div class="card">
+            <h3>Notifications Control Panel</h3>
+            <p>Decide what alerts, reminders, or promotions go out to customers.</p>
+        </div>
+        <div class="card">
+            <h3>System Settings</h3>
+            <p>Configure service categories, pricing, and availability.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function switchTab(evt, paneId) {
+        let panes = document.getElementsByClassName("pane");
+        for (let p of panes) { p.classList.remove("active"); }
+        let buttons = document.getElementsByClassName("role-tabs")[0].getElementsByTagName("button");
+        for (let b of buttons) { b.classList.remove("active"); }
+        document.getElementById(paneId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
