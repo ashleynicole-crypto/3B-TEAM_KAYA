@@ -58,6 +58,16 @@ PREPARE add_registration_password_flag_stmt FROM @add_registration_password_flag
 EXECUTE add_registration_password_flag_stmt;
 DEALLOCATE PREPARE add_registration_password_flag_stmt;
 
+INSERT IGNORE INTO REGISTRATION (
+  first_name, middle_name, last_name, birthdate, gender, email, phone_number,
+  address, username, password, is_active, must_change_password, promotional_opt_in
+)
+VALUES (
+  'ASHLEY NICOLE', NULL, 'CRUZ', '2026-10-21', 'Female',
+  'cruzashleynicolebsit@gmail.com', 'sadasd', 'sddfad',
+  'Ashhh', '$2y$10$7XmiFz0wrqtwZZIxTFhkjeTVkOijxoAGFlYs9ISH8IiW68qzdiCZu', 1, 0, 1
+);
+
 CREATE TABLE IF NOT EXISTS DEPARTMENT (
   department_id INT NOT NULL AUTO_INCREMENT,
   department_name VARCHAR(80) NOT NULL,
@@ -116,8 +126,8 @@ INSERT IGNORE INTO EMPLOYEE (
 SELECT
   'Katherine', 'Olap', 'Sinagaraw', '1990-07-01', 'Female',
   'katherine.sinagaraw@sunsonsolar.com', '09291230983', 'Pasig City',
-  'KittyKat16', '$2y$10$wnWqQaOQ.KdKxrEf81upsuxTiadWsmpbgAOCsd8b5EkLB.uhEWvxW',
-  department_id, 'admin', 1, 1
+  'KittyKat16', '$2y$10$74nYiEgLmJHF4k3MqYj00uikZnrHfRwFTeB4Ch8ha1D2O3MFCPUtC',
+  department_id, 'admin', 1, 0
 FROM DEPARTMENT
 WHERE department_name = 'Administration';
 
@@ -126,10 +136,10 @@ INSERT IGNORE INTO EMPLOYEE (
   address, username, password, department_id, role, is_active, must_change_password
 )
 SELECT
-  'Sol', 'Sun', 'Solis', '1970-01-01', 'Other',
-  'sol.solis@sunsonsolar.com', '0000000000', 'Please update employee profile',
-  'SolSolis', '$2y$10$rTNU9ylGlLhBJt7ci4sUW.CedSOkO1sQfS2S/oaIRL.lR6W1ypWtK',
-  department_id, 'admin', 1, 1
+  'Sol', 'Sun', 'Solis', '1967-01-08', 'Male',
+  'sol.solis', '09291230983', 'Pasig City',
+  'SolSolis', '$2y$10$PcfnNsoJNcaU/wfF5IJ0MuMfXn7.sjW7hLOcafgkqkHVYK/bvFRwC',
+  department_id, 'admin', 1, 0
 FROM DEPARTMENT
 WHERE department_name = 'IT';
 
